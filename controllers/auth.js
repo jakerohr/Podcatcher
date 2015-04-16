@@ -6,7 +6,8 @@ var router = express.Router();
 //GET /auth/login
 //display login form
 router.get('/login',function(req,res){
-    res.render('auth/login');
+    var user = req.getUser();
+    res.render('auth/login',{user:user});
 });
 
 //POST /login
