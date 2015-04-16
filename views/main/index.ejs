@@ -1,0 +1,16 @@
+<% include ../partials/header.ejs %>
+
+
+<% include ../partials/alerts.ejs %>
+
+<% if(user) { %>
+
+
+<h1>Welcome</h1>
+<div class="sign-in">
+  <a href="/auth/login" class="btn btn-primary">Login</a>
+  <a href="/auth/signup" class="btn btn-primary">Signup</a>
+</div>
+
+
+<% include ../partials/footer.ejs %>

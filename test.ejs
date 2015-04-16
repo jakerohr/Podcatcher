@@ -1,0 +1,27 @@
+ <!-- <div class="row">
+      <div class="col-md-12">
+        <% list.story.forEach(function(story, i){ %>
+        <ul>
+          <li><%= story.show ? story.show[0].program.$text : 'n/a' %></li>
+          <li><%= story.title.$text %></li>
+          <li><%= story.teaser.$text %></li>
+          <li>Duration: <%= story.audio[0].duration.$text %></li>
+          <li>Audio file: <%= story.audio[0].format.mp4 ? story.audio[0].format.mp4.$text : 'n/a' %></li>
+        <hr>
+        </ul>
+        <% }); %>
+    </div>
+  </div> -->
+
+<!-- list results (update to playlist and episode data) -->
+<% filterTime.forEach(function(filterTime, i){ %>
+        <ul>
+          <li>Program: <%= filterTime.show ? filterTime.show[0].program.$text : 'n/a' %></li>
+          <li>Title: <%= filterTime.title.$text %></li>
+          <li>Teaser: <%= filterTime.teaser.$text %></li>
+          <li>Duration: <%= +(filterTime.audio[0].duration.$text/60).toFixed(2) %> minutes</li>
+          <li>Audio file: <%= filterTime.audio[0].format.mp4 ? filterTime.audio[0].format.mp4.$text : 'n/a' %></li>
+        <hr>
+        </ul>
+
+        <% }); %>
