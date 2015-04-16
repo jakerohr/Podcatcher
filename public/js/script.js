@@ -1,7 +1,7 @@
 $(function(){
 console.log("test js");
 
-if(user) {
+
 
 $('.glyphicon-chevron-up').on('click', function(e){
   e.preventDefault();

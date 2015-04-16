@@ -12,7 +12,7 @@ router.get('/',function(req,res){
 router.get("/:id", function(req,res) {
   var term = req.query.term;
   var userTime = req.query.userTime;
-  var url = "http://api.npr.org/query?fields=title,teaser,show,audio,image&requiredAssets=audio&searchTerm=" + term + "&sort=relevance&output=JSON&numResults=50&apiKey=MDAwNzQ4ODUxMDEyOTc4NzE2NTNjZjVkMg001";
+  var url = "http://api.npr.org/query?fields=title,teaser,show,audio,image&requiredAssets=audio&searchTerm=" + term + "&sort=relevance&output=JSON&numResults=50&apiKey="+ process.env.Npr_Key;
   request(url, function (error, response, data) {
     if (!error && response.statusCode == 200) {
 

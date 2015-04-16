@@ -63,6 +63,4 @@ app.use('/',require('./controllers/main.js'));
 app.use('/auth',require('./controllers/auth.js'));
 app.use('/podcasts',require('./controllers/podcasts.js'));
 
-app.listen(3000, function() {
-  console.log("server started on port 3000")
-});
+app.listen(process.env.PORT || 3000);
