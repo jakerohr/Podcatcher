@@ -12,6 +12,8 @@ body {
 }
 .page {
   max-width: 300px;
+  position: relative;
+  top: -60px;
 /*  border: 4px solid rgb(51, 51, 51);
   border-radius: 5px;*/
 }
