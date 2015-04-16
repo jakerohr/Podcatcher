@@ -11,13 +11,13 @@ router.get('/',function(req,res){
 
 router.get("/:id", function(req,res) {
   var term = req.query.term;
+  var user = req.getUser();
   var userTime = req.query.userTime;
   var url = "http://api.npr.org/query?fields=title,teaser,show,audio,image&requiredAssets=audio&searchTerm=" + term + "&sort=relevance&output=JSON&numResults=50&apiKey="+ process.env.Npr_Key;
   request(url, function (error, response, data) {
     if (!error && response.statusCode == 200) {
 
     var podcasts = JSON.parse(data);
-
     var episodeData = [];
     var totalTime = 0;
     var playList = [];
@@ -38,7 +38,7 @@ router.get("/:id", function(req,res) {
         console.log(totalTime);
         console.log(playList);
 
-  res.render('podcasts/show', {playList:playList, episodeData:episodeData})
+  res.render('podcasts/show', {playList:playList, episodeData:episodeData, user:user})
 
 
   } else {
