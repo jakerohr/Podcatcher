@@ -6,8 +6,18 @@ var bodyParser = require('body-parser');
 
 router.get('/',function(req,res){
     var user = req.getUser();
-    res.render('podcasts/index',{user:user});
+    if(user) {
+     db.save.findAll({
+      where: {userId:user.id}}).then(function(sav){
+      var saves = (sav);
+    res.render('podcasts/index',{user:user, saves:saves});
+    });
+      } else {
+      res.render('podcasts/index',{user:user});
+    }
 });
+
+
 
 router.get("/:id", function(req,res) {
   var term = req.query.term;
@@ -35,24 +45,20 @@ router.get("/:id", function(req,res) {
         }
       }
     }
-        console.log(totalTime);
-        console.log(playList);
 
-  res.render('podcasts/show', {playList:playList, episodeData:episodeData, user:user})
-
-
+    if(user) {
+      db.save.findAll({
+      where: {userId:user.id}}).then(function(sav){
+      var saves = (sav);
+      res.render('podcasts/show',{user:user, playList:playList, episodeData:episodeData, saves:saves});
+      });
+    } else {
+      res.render('podcasts/show',{playList:playList, episodeData:episodeData, user:user});
+    }
   } else {
     res.send("error")}
   })
 })
-
-// combine forms - make both variables (req.body.term, req.body.userTime)
-// ditch query - go req.body.term then TEST
-// render filterTime one at a time /:id using req.params and index of array
-
-
-
-
 
 
 

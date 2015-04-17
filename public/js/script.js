@@ -10,6 +10,7 @@ window.addEventListener("load",function() {
   }, 0);
 });
 
+
 $('.glyphicon-chevron-up').on('click', function(e){
   e.preventDefault();
   if($('.timer').val() >= 0) {
@@ -22,6 +23,25 @@ $('.glyphicon-chevron-up').on('click', function(e){
     $('.timer').val(parseInt($('.timer').val())-5);
   }
 })
+
+$('.create-save').on('submit', function(e){
+  e.preventDefault();
+  var myUrl = $(this).attr('action')
+  var myData = $(this).serialize()
+      $.ajax({
+          method:'POST',
+          url:myUrl,
+          data:myData
+      }).done(function(){
+        console.log('completed save')
+      });
+  })
+$('.go').on('click',function(){
+  $('.success').fadeIn(1200).removeClass('hidden').delay(1000).fadeOut(1200)
+
+
+});
+
 
 
 

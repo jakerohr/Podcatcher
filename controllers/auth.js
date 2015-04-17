@@ -3,6 +3,9 @@ var express = require('express');
 var bcrypt = require('bcrypt');
 var router = express.Router();
 
+
+
+
 //GET /auth/login
 //display login form
 router.get('/login',function(req,res){
@@ -13,6 +16,7 @@ router.get('/login',function(req,res){
 //POST /login
 //process login data and login user
 router.post('/login',function(req,res){
+    var user = req.getUser();
     db.user.find({where:{userName:req.body.username}})
     .then(function(user){
         if(user){
@@ -48,13 +52,14 @@ router.post('/login',function(req,res){
 //GET /auth/signup
 //display sign up form
 router.get('/signup',function(req,res){
-    res.render('auth/signup');
+    var user = req.getUser();
+    res.render('auth/signup',{user:user});
 });
 
 //POST /auth/signup
 //create new user in database
 router.post('/signup',function(req,res){
-
+    var user = req.getUser();
     var userQuery={userName:req.body.username};
     var userData={
         userName:req.body.username,
@@ -67,7 +72,7 @@ router.post('/signup',function(req,res){
             req.flash('success','New user created. Please login.');
             res.redirect('/auth/login');
         }else{
-            req.flash('danger','e-mail already exists.');
+            req.flash('danger','username already exists.');
             res.redirect('/auth/signup');
         }
 
@@ -101,6 +106,7 @@ router.post('/signup',function(req,res){
 //GET /auth/logout
 //logout logged in user
 router.get('/logout',function(req,res){
+    var user = req.getUser();
     delete req.session.user;
     req.flash('info','You have been logged out.')
     res.redirect('/podcasts');

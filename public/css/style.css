@@ -2,11 +2,6 @@ body {
   font-family: 'Cabin', sans-serif;
   background-color: #ffbb00;
 }
-
-.wimpy {
-  /*width:200px;
-  height:100px;*/
-}
 .go {
   width: 300px;
 }
@@ -22,11 +17,25 @@ body {
   margin: 20px auto;
   margin-bottom: 0px;
 }
+h1 {
+  font-size: 55px;
+}
+.welcome {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.enjoy {
+  margin-top: 30px;
+}
 .intro {
   font-size: 20px;
 }
 .sign-in {
   margin-top: 50px;
+}
+.wimpy {
+  position: absolute;
+  top: 160px;
 }
 .timer {
   width: 165px;
@@ -48,4 +57,36 @@ body {
 }
 .glyphicon-chevron-up {
   margin-top: 20px;
+}
+.save-playlist {
+  width: 30px;
+}
+.glyphicon-plus {
+  font-size: 30px;
+}
+.fav {
+  width: 265px;
+}
+.save {
+  margin-top: 30px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #0028B2;
+  border-color: #0028B2;
+}
+.speaker {
+  width: 120px;
+  opacity: .90;
+  margin-bottom: 40px;
+}
+.mini-speaker {
+  width: 30px;
+  margin-left: 20px;
+}
+.about {
+  margin-bottom: 30px;
+}
+.hidden {
+  visibility: hidden;
 }

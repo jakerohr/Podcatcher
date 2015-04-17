@@ -4,8 +4,8 @@
   <title>Podcatcher</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
   <meta name="apple-mobile-web-app-capable" content="yes">
-
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="/css/sidebar.css">
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -24,46 +24,48 @@
       <ul class="nav sidebar-nav">
         <li class="sidebar-brand">
           <a href="#">
-           Podcatcher
+           Podcatcher<img class="mini-speaker" src='/images/speaker.png'/>
          </a>
        </li>
        <li>
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="#">About</a>
+        <a href="/podcasts">Podcast Search</a>
       </li>
       <li>
-        <a href="#">Events</a>
-      </li>
-      <li>
-
         <% if(user) { %>
           <a href="/auth/logout">Logout</a>
         <% } else { %>
           <a href="/auth/login">Login</a>
         <% } %>
-
       </li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Saves<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li class="dropdown-header">Dropdown heading</li>
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li><a href="#">Separated link</a></li>
-          <li><a href="#">One more separated link</a></li>
+          <li class="dropdown-header">
+          <% if(user) { %>
+          <%= typeof user.userName === 'string' ? user.userName : 'Unknown' %>'s <% } %>
+          Saves</li>
+
+          <% if(user) {
+            saves.forEach(function(value, i){ %>
+          <li>
+            <a href="/saves/<%=saves[i].id%>">- <%=saves[i].description%></a>
+          </li>
+          <% });} %>
+
+
+
+
+          <li><a href="/saves/create">Create New Save</a></li>
         </ul>
       </li>
       <li>
-        <a href="#">Services</a>
+        <a href="mailto:jakerohr@gmail.com">Contact</a>
       </li>
       <li>
-        <a href="#">Contact</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/maridlcrmn">Follow me</a>
+        <a href="/about">About</a>
       </li>
     </ul>
   </nav>

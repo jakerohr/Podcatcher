@@ -4,6 +4,7 @@ var session = require('express-session');
 var request = require("request");
 var flash = require('connect-flash');
 
+
 //configure express
 var app = express();
 app.set("view engine", "ejs");
@@ -40,27 +41,12 @@ app.use(function(req,res,next){
 })
 
 
-// app.get("/", function (req,res) {
-//   res.render("index");
-// });
 
-// app.get("/:id", function(req,res) {
-//   var query = req.query.q
-//   var url = "http://api.npr.org/query?fields=title,teaser,show,audio,image&requiredAssets=audio&searchTerm=" + query + "&sort=relevance&output=JSON&numResults=50&apiKey=MDAwNzQ4ODUxMDEyOTc4NzE2NTNjZjVkMg001";
-//   request(url, function (error, response, data) {
-//     if (!error && response.statusCode == 200) {
-
-//     var podcasts = JSON.parse(data);
-//     // console.log(podcasts.list.story[0].show[0].program.$text)
-//   res.render('podcasts/index', podcasts)
-//   } else {
-//     res.send("error")}
-//   })
-// })
 
 //load routes
 app.use('/',require('./controllers/main.js'));
 app.use('/auth',require('./controllers/auth.js'));
 app.use('/podcasts',require('./controllers/podcasts.js'));
+app.use('/saves',require('./controllers/saves.js'));
 
 app.listen(process.env.PORT || 3000);

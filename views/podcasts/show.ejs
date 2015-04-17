@@ -1,17 +1,13 @@
 <% include ../partials/header.ejs %>
 
+<div>
+  <h1 class="text-center enjoy">Enjoy</h1>
+</div>
 
-  <h1>Search Results</h1>
-    <hr>
+    <!-- Wimpy Player -->
+    <div class="wimpy" data-skin="/wimpy/wimpy.skins/Big-Volume.tsv" data-width=300 data-height=256 data-autoPlay=1 data-wimpyplayer data-responsive data-autoAdvance=0 data-infoScroll=0 data-media=<%- JSON.stringify(playList) %>></div>
 
-    <div class="row">
-      <div>
 
-        <!-- Wimpy Player -->
-        <div class="wimpy" data-wimpyplayer data-responsive data-autoAdvance=0 data-infoScroll=0 data-media=<%- JSON.stringify(playList) %>></div>
-
-      </div>
-    </div>
 
 
 
