@@ -1,6 +1,9 @@
 $(function(){
 console.log("test js");
 
+$('.alert').delay(2000).fadeOut(3000)
+
+
 // When ready...
 window.addEventListener("load",function() {
   // Set a timeout...

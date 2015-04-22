@@ -77,7 +77,6 @@ router.post('/signup',function(req,res){
         }
 
     }).catch(function(error){
-        //NOT COVERED IN CLASS
         //handle validation errors and create flash
         //messages
         if(error){

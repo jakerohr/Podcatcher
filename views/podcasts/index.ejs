@@ -2,9 +2,11 @@
 
 <% var sav %>
 
+
 <div class="text-left">
-  <h1 class="text-center">Podcatcher</h1>
+  <h1 class="text-left">Podcatcher</h1>
   <p class="text-left intro">
+
 
   <% if(sav) { %>
   <h3 class="text-center"><%=sav.description%></h3>
@@ -35,6 +37,6 @@
     </form>
   </div>
 </div>
-
+<% include ../partials/alerts.ejs %>
 
 <% include ../partials/footer.ejs %>
