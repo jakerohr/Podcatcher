@@ -31,7 +31,6 @@ router.get("/:id", function(req,res) {
     var episodeData = [];
     var totalTime = 0;
     var playList = [];
-    console.log(podcasts);
 
       if (podcasts.list.story) {
         for (var i = 0; i < podcasts.list.story.length; i++) {
@@ -59,11 +58,13 @@ router.get("/:id", function(req,res) {
           res.render('podcasts/show',{playList:playList, episodeData:episodeData, user:user});
         }
       } else {
-      res.send("error")
+        req.flash('danger','No podcasts found. Please search again.');
+        res.redirect("/podcasts")
       }
 
     } else {
-      res.send("error")
+      req.flash('danger','Whoops. There seems to be a mysterious error.');
+      res.redirect("/podcasts")
     }
   })
 })

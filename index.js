@@ -43,7 +43,8 @@ app.use('/saves',require('./controllers/saves.js'));
 
 app.get('*', function(req, res) {
   var user= req.getUser();
-  res.send('error')
+  req.flash('danger',"I'm sorry. That is an invalid URL");
+  res.redirect('/')
 });
 
 app.listen(process.env.PORT || 3000);
